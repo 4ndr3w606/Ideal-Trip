@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Admin · Ideal-Trip')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container">
+    <nav th:replace="~{fragments/layout :: adminNav}"></nav>
+
+    <h1 class="section__title">Panel de administración</h1>
+    <p class="section__subtitle">Resumen general del estado de la plataforma.</p>
+
+    <div class="metric-grid">
+
+        <div class="metric-card">
+            <p class="metric-card__label">Destinos</p>
+            <p class="metric-card__value" th:text="${totalDestinos}">0</p>
+            <p class="metric-card__label"
+               th:text="|${totalDestinosActivos} activos|">activos</p>
+        </div>
+
+        <div class="metric-card">
+            <p class="metric-card__label">Paquetes</p>
+            <p class="metric-card__value" th:text="${totalPaquetes}">0</p>
+            <p class="metric-card__label"
+               th:text="|${totalPaquetesActivos} activos|">activos</p>
+        </div>
+
+        <div class="metric-card">
+            <p class="metric-card__label">Reservas totales</p>
+            <p class="metric-card__value" th:text="${totalReservas}">0</p>
+        </div>
+
+        <div class="metric-card">
+            <p class="metric-card__label">Usuarios</p>
+            <p class="metric-card__value" th:text="${totalUsuarios}">0</p>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

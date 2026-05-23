@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Admin · Reservas')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container">
+    <nav th:replace="~{fragments/layout :: adminNav}"></nav>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
+        <h1 class="section__title" style="margin:0;">Reservas</h1>
+    </div>
+
+    <!-- Mensajes flash -->
+    <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+    <div th:if="${mensajeError}"  class="alert alert-danger"  th:text="${mensajeError}"></div>
+
+    <!-- Filtro por estado -->
+    <form th:action="@{/admin/reservas}" method="get" style="margin: 1rem 0;">
+        <label for="estado" style="margin-right: 0.5rem;">Filtrar por estado:</label>
+        <select id="estado" name="estado" class="form-select" style="display:inline-block; width:auto;"
+                onchange="this.form.submit()">
+            <option value="" th:selected="${estadoSeleccionado == null}">Todos</option>
+            <option th:each="e : ${estados}"
+                    th:value="${e}"
+                    th:text="${e}"
+                    th:selected="${estadoSeleccionado != null and estadoSeleccionado.name() == e.name()}">
+                ESTADO
+            </option>
+        </select>
+        <a th:href="@{/admin/reservas}" class="btn btn--outline btn--sm" style="margin-left: 0.5rem;">
+            Limpiar
+        </a>
+    </form>
+
+    <p th:if="${#lists.isEmpty(reservas)}" class="section__subtitle">
+        No hay reservas que mostrar.
+    </p>
+
+    <table th:unless="${#lists.isEmpty(reservas)}" class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Paquete</th>
+            <th>Fecha viaje</th>
+            <th>Personas</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${reservas}">
+            <td th:text="${r.id}">1</td>
+            <td th:text="${r.usuario.email}">cliente@email.com</td>
+            <td th:text="${r.paquete.nombre}">Paquete</td>
+            <td th:text="${#temporals.format(r.fechaViaje, 'dd/MM/yyyy HH:mm')}">01/01/2026</td>
+            <td th:text="${r.cantidadPersonas}">1</td>
+            <td th:text="'$' + ${#numbers.formatInteger(r.precioTotal, 0, 'POINT')}">$0</td>
+            <td>
+                <span th:class="|badge badge--${#strings.toLowerCase(r.estado.name())}|"
+                      th:text="${r.estado}">ESTADO</span>
+            </td>
+            <td class="admin-table__acciones">
+
+                <!-- PENDIENTE: puede confirmar o cancelar -->
+                <th:block th:if="${r.estado.name() == 'PENDIENTE'}">
+                    <form th:action="@{/admin/reservas/{id}/confirmar(id=${r.id})}"
+                          method="post" style="display:inline;">
+                        <button type="submit" class="btn btn--primary btn--sm">Confirmar</button>
+                    </form>
+                    <form th:action="@{/admin/reservas/{id}/cancelar(id=${r.id})}"
+                          method="post"
+                          onsubmit="return confirm('¿Cancelar esta reserva? Los cupos se liberarán.');"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn--danger btn--sm">Cancelar</button>
+                    </form>
+                </th:block>
+
+                <!-- CONFIRMADA: puede completar o cancelar -->
+                <th:block th:if="${r.estado.name() == 'CONFIRMADA'}">
+                    <form th:action="@{/admin/reservas/{id}/completar(id=${r.id})}"
+                          method="post"
+                          onsubmit="return confirm('¿Marcar esta reserva como completada? Esta acción no se puede deshacer.');"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn--primary btn--sm">Completar</button>
+                    </form>
+                    <form th:action="@{/admin/reservas/{id}/cancelar(id=${r.id})}"
+                          method="post"
+                          onsubmit="return confirm('¿Cancelar esta reserva? Los cupos se liberarán.');"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn--danger btn--sm">Cancelar</button>
+                    </form>
+                </th:block>
+
+                <!-- Estados terminales: solo informativo -->
+                <span th:if="${r.estado.name() == 'CANCELADA' or r.estado.name() == 'COMPLETADA'}"
+                      style="color:#999; font-size:0.85rem;">
+                    Sin acciones disponibles
+                </span>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Mis reservas · Ideal-Trip')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="section__title">Mis reservas</h1>
+
+        <!-- Banners flash -->
+        <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+        <div th:if="${mensajeError}" class="alert alert-danger" th:text="${mensajeError}"></div>
+
+        <p th:if="${#lists.isEmpty(reservas)}" class="section__subtitle">
+            Aún no tienes reservas.
+            <a th:href="@{/paquetes}">Explora nuestros paquetes</a> para empezar.
+        </p>
+
+        <div th:each="r : ${reservas}" class="reserva-card">
+
+            <div class="reserva-card__header">
+                <h3 th:text="${r.paquete.nombre}">Paquete</h3>
+                <span class="badge"
+                      th:classappend="${'badge--' + #strings.toLowerCase(r.estado.name())}"
+                      th:text="${r.estado}">ESTADO</span>
+            </div>
+
+            <div class="reserva-card__body">
+                <p th:text="|Destino: ${r.paquete.destino.nombre}, ${r.paquete.destino.pais}|">Destino</p>
+                <p th:text="|Fecha de viaje: ${#temporals.format(r.fechaViaje, 'dd/MM/yyyy HH:mm')}|">Fecha</p>
+                <p th:text="|Personas: ${r.cantidadPersonas}|">Personas</p>
+                <p>
+                    Total:
+                    <strong th:text="'$' + ${#numbers.formatInteger(r.precioTotal, 0, 'POINT')}">$0</strong>
+                </p>
+                <p th:if="${r.descripcion != null and !#strings.isEmpty(r.descripcion)}"
+                   th:text="|Observaciones: ${r.descripcion}|">Observaciones</p>
+            </div>
+
+            <!-- Botón cancelar solo si PENDIENTE o CONFIRMADA -->
+            <!-- Acciones contextuales según estado -->
+            <div class="reserva-card__footer"
+                 th:if="${r.estado.name() == 'PENDIENTE' or r.estado.name() == 'CONFIRMADA'}">
+
+                <!-- Botón "Pagar" solo si está PENDIENTE -->
+                <form th:if="${r.estado.name() == 'PENDIENTE'}"
+                      th:action="@{/reservas/{id}/pagar(id=${r.id})}"
+                      method="post"
+                      onsubmit="return confirm('¿Confirmar el pago de esta reserva?');"
+                      style="display:inline;">
+                    <button type="submit" class="btn btn--primary">Pagar ahora</button>
+                </form>
+
+                <!-- Cancelar disponible en PENDIENTE y CONFIRMADA -->
+                <form th:action="@{/reservas/{id}/cancelar(id=${r.id})}"
+                      method="post"
+                      onsubmit="return confirm('¿Cancelar esta reserva?');"
+                      style="display:inline;">
+                    <button type="submit" class="btn btn--outline">Cancelar reserva</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

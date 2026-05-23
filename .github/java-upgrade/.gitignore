@@ -1,0 +1,55 @@
+# ===== Build =====
+target/
+.mvn/wrapper/maven-wrapper.jar
+build/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ===== IDE =====
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### STS / Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# ===== Spring Boot / configuración local =====
+HELP.md
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# ===== Secrets / credenciales (NUNCA commitear) =====
+.env
+.env.local
+*.pem
+*.key
+secrets/
+
+# ===== Uploads y datos locales =====
+uploads/
+/logs/
+*.log
+
+# ===== Documentación interna (no se publica) =====
+NOTAS_PROYECTO.md

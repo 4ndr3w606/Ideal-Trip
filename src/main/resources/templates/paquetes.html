@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+
+<head th:replace="~{fragments/layout :: head('Ideal-Trip · Paquetes')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container mt-4 mb-5">
+    <div class="row">
+
+        <!-- ===== Sidebar de filtros ===== -->
+        <aside class="col-lg-3 col-md-4 mb-3">
+            <form th:action="@{/paquetes}" method="get" class="panel-filtros">
+
+                <div class="filtro-seccion">
+                    <h6 class="filtro-titulo">Destino</h6>
+                    <select name="destinoId" class="form-select">
+                        <option value="">Todos</option>
+                        <option th:each="d : ${destinos}"
+                                th:value="${d.id}"
+                                th:text="${d.nombre}"
+                                th:selected="${destinoSeleccionado == d.id}">Destino</option>
+                    </select>
+                </div>
+
+                <div class="filtro-seccion mt-3">
+                    <h6 class="filtro-titulo">Tipo</h6>
+                    <select name="tipo" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="Todo Incluido" th:selected="${tipoSeleccionado == 'Todo Incluido'}">Todo Incluido</option>
+                        <option value="Aventura"     th:selected="${tipoSeleccionado == 'Aventura'}">Aventura</option>
+                        <option value="Cultural"     th:selected="${tipoSeleccionado == 'Cultural'}">Cultural</option>
+                        <option value="Luna de Miel" th:selected="${tipoSeleccionado == 'Luna de Miel'}">Luna de Miel</option>
+                        <option value="Familiar"     th:selected="${tipoSeleccionado == 'Familiar'}">Familiar</option>
+                    </select>
+                </div>
+
+                <div class="filtro-seccion mt-3">
+                    <h6 class="filtro-titulo">Rango de precio</h6>
+                    <input type="number" name="precioMin" class="form-control mb-2"
+                           placeholder="Mínimo" th:value="${precioMin}">
+                    <input type="number" name="precioMax" class="form-control"
+                           placeholder="Máximo" th:value="${precioMax}">
+                </div>
+
+                <div class="filtro-seccion mt-3">
+                    <button type="submit" class="btn btn--primary btn--full">Aplicar filtros</button>
+                    <a th:href="@{/paquetes}" class="btn btn--outline btn--full mt-2">Limpiar</a>
+                </div>
+            </form>
+        </aside>
+
+        <!-- ===== Resultados ===== -->
+        <main class="col-lg-9 col-md-8">
+
+            <p class="resultados-texto"
+               th:text="|${#lists.size(paquetes)} paquete(s) encontrado(s)|">
+                0 paquetes
+            </p>
+
+            <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle">
+                No se encontraron paquetes con esos criterios.
+            </p>
+
+            <div th:unless="${#lists.isEmpty(paquetes)}" class="paquetes-grid">
+
+                <div th:each="p : ${paquetes}" class="paquete-card">
+
+                    <!-- Imagen flotante con padding interior -->
+                    <div class="paquete-card__imagen-wrap">
+                        <div class="paquete-card__imagen"
+                             th:with="imgUrl=${p.imagenUrl != null and !p.imagenUrl.isBlank()
+                               ? p.imagenUrl
+                               : p.destino.imagenUrl}"
+                             th:style="${imgUrl != null} ? |background-image: url(${imgUrl})| : ''">
+                        </div>
+                    </div>
+
+                    <div class="paquete-card__body">
+                        <span class="badge badge--outline paquete-card__tipo" th:text="${p.tipo}">Tipo</span>
+
+                        <h3 class="paquete-card__titulo" th:text="${p.nombre}">Nombre del paquete</h3>
+
+                        <ul class="paquete-card__list">
+                            <li>
+                                <span class="paquete-card__icon">📍</span>
+                                <span th:text="|${p.destino.nombre}, ${p.destino.pais}|">Destino</span>
+                            </li>
+                            <li>
+                                <span class="paquete-card__icon">⏱️</span>
+                                <span th:text="|${p.duracionDias} días|">7 días</span>
+                            </li>
+                            <li>
+                                <span class="paquete-card__icon">👥</span>
+                                <span th:text="|${p.cuposDisponibles} cupos disponibles|">Cupos</span>
+                            </li>
+                        </ul>
+
+                        <p class="paquete-card__descripcion" th:text="${p.descripcion}">Descripción</p>
+
+                        <a th:href="@{/paquetes/{id}(id=${p.id})}" class="btn btn--primary">
+                            <span>Ver detalle por</span>
+                            <span th:text="'$ ' + ${#numbers.formatInteger(p.precio, 0, 'POINT')}">$0</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

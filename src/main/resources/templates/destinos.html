@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+
+<head th:replace="~{fragments/layout :: head('Ideal-Trip · Destinos')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<!-- Contenido principal -->
+<div class="container mt-4 mb-5">
+    <div class="row">
+
+        <!-- ===== Sidebar de filtros ===== -->
+        <aside class="col-lg-3 col-md-4 mb-3">
+            <form th:action="@{/destinos}" method="get" class="panel-filtros">
+
+                <div class="filtro-seccion">
+                    <h6 class="filtro-titulo">Buscar</h6>
+                    <input type="text" name="q" class="form-control"
+                           placeholder="Nombre del destino"
+                           th:value="${busqueda}">
+                </div>
+
+                <div class="filtro-seccion mt-3">
+                    <h6 class="filtro-titulo">País</h6>
+                    <select name="pais" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="Brasil"   th:selected="${paisSeleccionado == 'Brasil'}">Brasil</option>
+                        <option value="España"   th:selected="${paisSeleccionado == 'España'}">España</option>
+                        <option value="Colombia" th:selected="${paisSeleccionado == 'Colombia'}">Colombia</option>
+                        <option value="México"   th:selected="${paisSeleccionado == 'México'}">México</option>
+                        <option value="Francia"  th:selected="${paisSeleccionado == 'Francia'}">Francia</option>
+                    </select>
+                </div>
+
+                <div class="filtro-seccion mt-3">
+                    <button type="submit" class="btn btn--primary btn--full">Aplicar filtros</button>
+                    <a th:href="@{/destinos}" class="btn btn--outline btn--full mt-2">Limpiar</a>
+                </div>
+            </form>
+        </aside>
+
+        <!-- ===== Resultados ===== -->
+        <main class="col-lg-9 col-md-8">
+
+            <p class="resultados-texto"
+               th:text="${#lists.size(destinos)} + ' destino(s) encontrado(s)'">
+                0 destinos
+            </p>
+
+            <p th:if="${#lists.isEmpty(destinos)}" class="section__subtitle">
+                No se encontraron destinos con esos criterios.
+            </p>
+
+            <!-- Cards de destinos -->
+            <div th:each="d : ${destinos}" class="card-destino">
+                <img th:src="${d.imagenUrl} ?: @{/img/}"
+                     th:alt="${d.nombre}" class="card-destino-img">
+                <div class="card-destino-body">
+                    <div>
+                        <h5 class="card-destino-nombre" th:text="${d.nombre}">Nombre</h5>
+                        <p class="card-destino-ubicacion"
+                           th:text="${d.pais + ' - ' + d.continente}">País - Continente</p>
+                        <p class="card-destino-desc" th:text="${d.descripcion}">Descripción</p>
+                    </div>
+                    <div class="card-destino-footer">
+                        <a th:href="@{/destinos/{id}(id=${d.id})}" class="btn-ver-paquetes">
+                            Ver paquetes
+                        </a>
+                        <span class="card-destino-meta"
+                              th:text="'Número de paquetes: ' + ${conteoPaquetes[d.id]}">
+                            Número de paquetes: 0
+                        </span>
+                        <span class="card-destino-meta">
+                            Desde:
+                            <strong th:text="'$' + ${#numbers.formatInteger(d.precioBase, 0, 'POINT')}">$0</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

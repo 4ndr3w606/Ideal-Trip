@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Admin · Formulario paquete')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container">
+    <nav th:replace="~{fragments/layout :: adminNav}"></nav>
+
+    <div class="auth-card" style="max-width: 700px;">
+        <h1 class="section__title"
+            th:text="${modo == 'crear'} ? 'Nuevo paquete' : 'Editar paquete'">Paquete</h1>
+
+        <form th:action="${modo == 'crear'}
+                        ? @{/admin/paquetes/nuevo}
+                        : @{/admin/paquetes/{id}/editar(id=${paqueteId})}"
+              th:object="${paqueteDto}" method="post" class="auth-form" novalidate>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('nombre')}"
+                       th:errors="*{nombre}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="destinoId">Destino</label>
+                <select id="destinoId" th:field="*{destinoId}" class="form-control">
+                    <option value="">-- Selecciona un destino --</option>
+                    <option th:each="d : ${destinos}"
+                            th:value="${d.id}"
+                            th:text="|${d.nombre}, ${d.pais}|">Destino</option>
+                </select>
+                <small class="error-msg" th:if="${#fields.hasErrors('destinoId')}"
+                       th:errors="*{destinoId}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" th:field="*{tipo}" class="form-control">
+                    <option value="">-- Selecciona un tipo --</option>
+                    <option value="Todo Incluido">Todo Incluido</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Luna de Miel">Luna de Miel</option>
+                    <option value="Familiar">Familiar</option>
+                </select>
+                <small class="error-msg" th:if="${#fields.hasErrors('tipo')}"
+                       th:errors="*{tipo}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}" class="form-control"
+                          rows="3" maxlength="1000"></textarea>
+                <small class="error-msg" th:if="${#fields.hasErrors('descripcion')}"
+                       th:errors="*{descripcion}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="incluye">Qué incluye</label>
+                <textarea id="incluye" th:field="*{incluye}" class="form-control"
+                          rows="3" maxlength="1000"
+                          placeholder="Vuelos · Hotel · Traslados · ..."></textarea>
+                <small class="error-msg" th:if="${#fields.hasErrors('incluye')}"
+                       th:errors="*{incluye}">Error</small>
+            </div>
+            <div class="form-group">
+                <label for="imagenUrl">URL de la imagen</label>
+                <input type="url" id="imagenUrl" th:field="*{imagenUrl}"
+                       class="form-control"
+                       placeholder="https://picsum.photos/seed/paris/800/450">
+                <small class="error-msg" th:if="${#fields.hasErrors('imagenUrl')}"
+                       th:errors="*{imagenUrl}">Error</small>
+                <small style="color:#777; display:block; margin-top:4px;">
+                    Opcional. Si lo dejás vacío, se usa la imagen del destino.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio (COP)</label>
+                <input type="number" step="0.01" id="precio" th:field="*{precio}"
+                       class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('precio')}"
+                       th:errors="*{precio}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="duracionDias">Duración (días)</label>
+                <input type="number" id="duracionDias" th:field="*{duracionDias}"
+                       class="form-control" min="1">
+                <small class="error-msg" th:if="${#fields.hasErrors('duracionDias')}"
+                       th:errors="*{duracionDias}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="cuposDisponibles">Cupos disponibles</label>
+                <input type="number" id="cuposDisponibles" th:field="*{cuposDisponibles}"
+                       class="form-control" min="0">
+                <small class="error-msg" th:if="${#fields.hasErrors('cuposDisponibles')}"
+                       th:errors="*{cuposDisponibles}">Error</small>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg"
+                    th:text="${modo == 'crear'} ? 'Crear paquete' : 'Guardar cambios'">
+                Guardar
+            </button>
+
+            <p class="auth-form__alt">
+                <a th:href="@{/admin/paquetes}">← Volver a paquetes</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

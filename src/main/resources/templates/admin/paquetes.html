@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Admin · Paquetes')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container">
+    <nav th:replace="~{fragments/layout :: adminNav}"></nav>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
+        <h1 class="section__title" style="margin:0;">Paquetes</h1>
+        <a th:href="@{/admin/paquetes/nuevo}" class="btn btn--primary">+ Nuevo paquete</a>
+    </div>
+
+    <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+
+    <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle">
+        No hay paquetes registrados.
+    </p>
+
+    <table th:unless="${#lists.isEmpty(paquetes)}" class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Destino</th>
+            <th>Precio</th>
+            <th>Días</th>
+            <th>Cupos</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${paquetes}"
+            th:classappend="${!p.activo} ? 'admin-table__inactivo'">
+            <td th:text="${p.id}">1</td>
+            <td>
+                <img th:if="${p.imagenUrl != null and !p.imagenUrl.isBlank()}"
+                     th:src="${p.imagenUrl}"
+                     alt="Imagen del paquete"
+                     style="width:70px; height:45px; object-fit:cover; border-radius:4px;">
+                <span th:unless="${p.imagenUrl != null and !p.imagenUrl.isBlank()}"
+                      style="color:#aaa; font-size:0.8rem;">—</span>
+            </td>
+            <td th:text="${p.nombre}">Nombre</td>
+            <td th:text="${p.tipo}">Tipo</td>
+            <td th:text="${p.destino.nombre}">Destino</td>
+            <td th:text="'$' + ${#numbers.formatInteger(p.precio, 0, 'POINT')}">$0</td>
+            <td th:text="${p.duracionDias}">0</td>
+            <td th:text="${p.cuposDisponibles}">0</td>
+            <td>
+                <span th:if="${p.activo}" class="badge badge--confirmada">Activo</span>
+                <span th:unless="${p.activo}" class="badge badge--cancelada">Inactivo</span>
+            </td>
+            <td class="admin-table__acciones">
+                <a th:href="@{/admin/paquetes/{id}/editar(id=${p.id})}"
+                   class="btn btn--outline btn--sm">Editar</a>
+
+                <form th:if="${p.activo}"
+                      th:action="@{/admin/paquetes/{id}/desactivar(id=${p.id})}"
+                      method="post"
+                      onsubmit="return confirm('¿Desactivar este paquete?');"
+                      style="display: inline;">
+                    <button type="submit" class="btn btn--danger btn--sm">Desactivar</button>
+                </form>
+
+                <!--
+                Si añadiste activar() al PaqueteService y al AdminController,
+                descomenta este bloque para tener simetría con destinos:
+
+                <form th:unless="${p.activo}"
+                      th:action="@{/admin/paquetes/{id}/activar(id=${p.id})}"
+                      method="post"
+                      style="display: inline;">
+                    <button type="submit" class="btn btn--primary btn--sm">Activar</button>
+                </form>
+                -->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

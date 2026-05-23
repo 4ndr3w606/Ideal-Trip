@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Página no encontrada · Ideal-Trip')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<section class="section">
+    <div class="container error-page">
+        <h1 class="error-page__codigo">404</h1>
+        <h2 class="section__title">No encontramos lo que buscas</h2>
+        <p class="section__subtitle"
+           th:text="${mensaje} ?: 'El recurso solicitado no existe.'">
+            El recurso solicitado no existe.
+        </p>
+        <a th:href="@{/}" class="btn btn--primary btn--lg">Volver al inicio</a>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Admin · Formulario destino')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<div class="container">
+    <nav th:replace="~{fragments/layout :: adminNav}"></nav>
+
+    <div class="auth-card" style="max-width: 700px;">
+        <h1 class="section__title"
+            th:text="${modo == 'crear'} ? 'Nuevo destino' : 'Editar destino'">Destino</h1>
+
+        <form th:action="${modo == 'crear'}
+                        ? @{/admin/destinos/nuevo}
+                        : @{/admin/destinos/{id}/editar(id=${destinoId})}"
+              th:object="${destinoDto}" method="post" class="auth-form" novalidate>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('nombre')}"
+                       th:errors="*{nombre}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País</label>
+                <input type="text" id="pais" th:field="*{pais}" class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('pais')}"
+                       th:errors="*{pais}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="continente">Continente</label>
+                <input type="text" id="continente" th:field="*{continente}" class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('continente')}"
+                       th:errors="*{continente}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}" class="form-control"
+                          rows="4" maxlength="2000"></textarea>
+                <small class="error-msg" th:if="${#fields.hasErrors('descripcion')}"
+                       th:errors="*{descripcion}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="imagenUrl">URL de imagen</label>
+                <input type="url" id="imagenUrl" th:field="*{imagenUrl}" class="form-control"
+                       placeholder="https://...">
+                <small class="error-msg" th:if="${#fields.hasErrors('imagenUrl')}"
+                       th:errors="*{imagenUrl}">Error</small>
+            </div>
+
+            <div class="form-group">
+                <label for="precioBase">Precio base (COP)</label>
+                <input type="number" step="0.01" id="precioBase" th:field="*{precioBase}"
+                       class="form-control">
+                <small class="error-msg" th:if="${#fields.hasErrors('precioBase')}"
+                       th:errors="*{precioBase}">Error</small>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg"
+                    th:text="${modo == 'crear'} ? 'Crear destino' : 'Guardar cambios'">
+                Guardar
+            </button>
+
+            <p class="auth-form__alt">
+                <a th:href="@{/admin/destinos}">← Volver a destinos</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

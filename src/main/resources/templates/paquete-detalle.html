@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+
+<head th:replace="~{fragments/layout :: head(|${paquete.nombre} · Ideal-Trip|)}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<!-- ===== HERO del paquete ===== -->
+<!-- ===== HERO del paquete ===== -->
+<section class="hero"
+         th:with="imgUrl=${paquete.imagenUrl != null and !paquete.imagenUrl.isBlank()
+                          ? paquete.imagenUrl
+                          : paquete.destino.imagenUrl}"
+         th:style="${imgUrl != null} ? |background-image: url(${imgUrl})| : ''">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+        <span class="badge badge--outline" th:text="${paquete.tipo}">Tipo</span>
+        <h1 class="hero__title" th:text="${paquete.nombre}">Paquete</h1>
+        <p class="hero__subtitle"
+           th:text="|Destino: ${paquete.destino.nombre}, ${paquete.destino.pais}|">Destino</p>
+    </div>
+</section>
+
+<!-- ===== Descripción y ficha ===== -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+
+            <!-- Columna izquierda: textos largos -->
+            <div class="col-lg-8">
+                <h2 class="section__title">Descripción</h2>
+                <p class="section__text" th:text="${paquete.descripcion}">Descripción...</p>
+
+                <h2 class="section__title mt-4">Qué incluye</h2>
+                <p class="section__text" th:text="${paquete.incluye}">Qué incluye...</p>
+            </div>
+
+            <!-- Columna derecha: ficha + CTA -->
+            <aside class="col-lg-4">
+                <div class="ficha-paquete">
+                    <p class="ficha-paquete__precio">
+                        Precio:
+                        <strong th:text="'$' + ${#numbers.formatInteger(paquete.precio, 0, 'POINT')}">$0</strong>
+                    </p>
+                    <ul class="ficha-paquete__list">
+                        <li th:text="|Duración: ${paquete.duracionDias} días|">Duración</li>
+                        <li th:text="|Cupos disponibles: ${paquete.cuposDisponibles}|">Cupos</li>
+                    </ul>
+
+                    <!-- Si hay cupos: botón funcional -->
+                    <a th:if="${paquete.cuposDisponibles > 0}"
+                       th:href="@{/reservas/nueva(paqueteId=${paquete.id})}"
+                       class="btn btn--primary btn--full">
+                        Reservar este paquete
+                    </a>
+
+                    <!-- Si no hay cupos: botón deshabilitado -->
+                    <button th:unless="${paquete.cuposDisponibles > 0}"
+                            class="btn btn--outline btn--full"
+                            disabled>
+                        Sin cupos disponibles
+                    </button>
+
+                    <a th:href="@{/destinos/{id}(id=${paquete.destino.id})}"
+                       class="btn btn--outline btn--full mt-2">
+                        Ver más sobre el destino
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

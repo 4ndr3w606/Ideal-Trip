@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+
+<head th:replace="~{fragments/layout :: head('Ideal-Trip · Descubre el mundo con nosotros')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">Descubre el mundo con nosotros</h1>
+    <p  class="hero__subtitle">Paquetes a medida, precios accesibles y atención personalizada</p>
+  </div>
+</section>
+
+<!-- DESTINOS DESTACADOS -->
+<section class="section" id="destinos">
+  <div class="container">
+
+    <h2 class="section__title">Destinos destacados</h2>
+
+    <!-- Caso lista vacía -->
+    <p th:if="${#lists.isEmpty(destinos)}" class="section__subtitle">
+      Aún no hay destinos disponibles.
+    </p>
+
+    <!-- Grid de destinos -->
+    <div th:unless="${#lists.isEmpty(destinos)}" class="destinos-grid">
+
+      <div th:each="d : ${destinos}" class="destino-card">
+        <div class="destino-card__img">
+          <img th:src="${d.imagenUrl} ?: @{/img/}"
+               th:alt="${d.nombre}">
+          <span class="destino-card__country" th:text="${d.pais}">País</span>
+        </div>
+        <br>
+        <br>
+        <div class="destino-card__body">
+          <h3 class="destino-card__name" th:text="${d.nombre + ', ' + d.pais}">Nombre, País</h3>
+          <p class="destino-card__price">
+            Desde
+            <strong th:text="'$' + ${#numbers.formatInteger(d.precioBase, 0, 'POINT')}">$0</strong>
+          </p>
+          <div class="destino-card__meta">
+                        <span class="badge badge--blue"
+                              th:text="${conteoPaquetes[d.id]} + ' paquetes'">0 paquetes</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES TURÍSTICOS -->
+<section class="section section--gray" id="paquetes">
+  <div class="container">
+
+    <h2 class="section__title">Paquetes turísticos</h2>
+    <p  class="section__subtitle">Planes todo incluido, escapadas de fin de semana, luna de miel, grupos y más.</p>
+
+    <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle">
+      Aún no hay paquetes disponibles.
+    </p>
+
+    <div th:unless="${#lists.isEmpty(paquetes)}" class="paquetes-grid">
+
+      <div th:each="p : ${paquetes}" class="paquete-card__imagen-wrap paquete-card">
+        <div class="paquete-card__imagen"
+             th:with="imgUrl=${p.imagenUrl != null and !p.imagenUrl.isBlank()
+                           ? p.imagenUrl
+                           : p.destino.imagenUrl}"
+             th:style="${imgUrl != null} ? |background-image: url(${imgUrl})| : ''">
+        </div>
+        <div class="paquete-card__body">
+          <span class="badge badge--outline" th:text="${p.tipo}">Tipo</span>
+          <p class="paquete-card__dest"
+             th:text="'Destino a ' + ${p.destino.nombre}">Destino</p>
+          <p class="paquete-card__incluye" th:text="${p.incluye}">Qué incluye</p>
+          <a th:href="@{/paquetes/{id}(id=${p.id})}" class="btn btn--primary btn--full">Ver detalles
+            Reservar por
+            <span th:text="'$' + ${#numbers.formatInteger(p.precio, 0, 'POINT')}" >$0</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="container">
+
+    <div class="como__header">
+      <span class="como__tag">¿Cómo funciona?</span>
+      <h2 class="section__title">Reservar es muy sencillo</h2>
+      <p  class="section__subtitle">4 pasos y tu aventura está lista</p>
+    </div>
+
+    <div class="steps">
+      <div class="steps__track"></div>
+
+      <div class="step">
+        <div class="step__circle">1</div>
+        <h3 class="step__title">Elige un destino</h3>
+        <p  class="step__desc">Explora nuestro catálogo y selecciona el que más te guste</p>
+      </div>
+
+      <div class="step">
+        <div class="step__circle">2</div>
+        <h3 class="step__title">Crea tu cuenta</h3>
+        <p  class="step__desc">Regístrate gratis en menos de un minuto</p>
+      </div>
+
+      <div class="step">
+        <div class="step__circle">3</div>
+        <h3 class="step__title">Reserva</h3>
+        <p  class="step__desc">Confirma tu paquete y número de viajeros</p>
+      </div>
+
+      <div class="step">
+        <div class="step__circle">4</div>
+        <h3 class="step__title">¡Viaja!</h3>
+        <p  class="step__desc">Recibe tu confirmación y prepara las maletas</p>
+      </div>
+    </div>
+
+    <div class="como__cta">
+      <a th:href="@{/paquetes}" class="btn btn--primary btn--lg">Ver todos los paquetes</a>
+    </div>
+
+  </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>
