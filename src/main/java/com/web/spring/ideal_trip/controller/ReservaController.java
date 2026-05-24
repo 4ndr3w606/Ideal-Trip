@@ -33,7 +33,10 @@ public class ReservaController {
     private final PaqueteService paqueteService;
     private final UsuarioService usuarioService;
 
-    /** GET /reservas/nueva?paqueteId=X → formulario pre-llenado. */
+
+    /**
+     * GET /reservas/nueva?paqueteId=X → formulario pre-llenado.
+     */
     @GetMapping("/reservas/nueva")
     public String mostrarFormulario(
             @RequestParam("paqueteId") Long paqueteId,
@@ -50,7 +53,9 @@ public class ReservaController {
         return "reserva-form";
     }
 
-    /** POST /reservas → crea la reserva para el usuario logueado. */
+    /**
+     * POST /reservas → crea la reserva para el usuario logueado.
+     */
     @PostMapping("/reservas")
     public String procesarReserva(
             @Valid @ModelAttribute("reservaDto") ReservaDto dto,
@@ -90,7 +95,9 @@ public class ReservaController {
         return "redirect:/mis-reservas";
     }
 
-    /** GET /mis-reservas → lista las reservas del usuario logueado. */
+    /**
+     * GET /mis-reservas → lista las reservas del usuario logueado.
+     */
     @GetMapping("/mis-reservas")
     public String listarMisReservas(Principal principal, Model model) {
         Usuario usuario = usuarioService.buscarPorEmail(principal.getName());
@@ -99,7 +106,9 @@ public class ReservaController {
         return "mis-reservas";
     }
 
-    /** POST /reservas/{id}/cancelar → cancela una reserva propia. */
+    /**
+     * POST /reservas/{id}/cancelar → cancela una reserva propia.
+     */
     @PostMapping("/reservas/{id}/cancelar")
     public String cancelar(
             @PathVariable Long id,
@@ -140,7 +149,7 @@ public class ReservaController {
         Reserva reserva = reservaService.buscarPorId(id);
         Usuario usuario = usuarioService.buscarPorEmail(principal.getName());
 
-        // Autorización a nivel de fila: solo el dueño puede pagar
+        // Autorización a nivel de fila
         if (!reserva.getUsuario().getId().equals(usuario.getId())) {
             flash.addFlashAttribute("mensajeError",
                     "No tienes permiso para pagar esta reserva.");
@@ -154,7 +163,7 @@ public class ReservaController {
             return "redirect:/mis-reservas";
         }
 
-        // Pago "exitoso" — confirmar la reserva
+        // Pago "exitoso" → confirmar la reserva
         reservaService.confirmar(id);
 
         log.info("Pago simulado OK: reserva={} usuario={}", id, usuario.getEmail());
@@ -163,4 +172,6 @@ public class ReservaController {
                 "Pago procesado correctamente. Tu reserva está CONFIRMADA.");
         return "redirect:/mis-reservas";
     }
+
+
 }

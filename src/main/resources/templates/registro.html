@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head th:replace="~{fragments/layout :: head('Crear cuenta · Ideal-Trip')}"></head>
+<head th:replace="~{fragments/layout :: head(#{registro.titulo})}"></head>
 
 <body>
 
@@ -10,13 +10,13 @@
 <section class="section">
     <div class="container">
         <div class="auth-card">
-            <h1 class="section__title">Crear cuenta</h1>
+            <h1 class="section__title" th:text="#{registro.crearCuenta}">Crear cuenta</h1>
 
             <form th:action="@{/registro}" th:object="${registroDto}"
                   method="post" class="auth-form" novalidate>
 
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre" th:text="#{form.nombre}">Nombre</label>
                     <input type="text" id="nombre" th:field="*{nombre}" class="form-control">
                     <small class="error-msg"
                            th:if="${#fields.hasErrors('nombre')}"
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="apellido">Apellido</label>
+                    <label for="apellido" th:text="#{form.apellido}">Apellido</label>
                     <input type="text" id="apellido" th:field="*{apellido}" class="form-control">
                     <small class="error-msg"
                            th:if="${#fields.hasErrors('apellido')}"
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" th:text="#{form.email}">Email</label>
                     <input type="email" id="email" th:field="*{email}" class="form-control">
                     <small class="error-msg"
                            th:if="${#fields.hasErrors('email')}"
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="telefono">Teléfono (opcional)</label>
+                    <label for="telefono" th:text="#{form.telefono}">Teléfono (opcional)</label>
                     <input type="tel" id="telefono" th:field="*{telefono}" class="form-control">
                     <small class="error-msg"
                            th:if="${#fields.hasErrors('telefono')}"
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
+                    <label for="password" th:text="#{form.contrasena}">Contraseña</label>
                     <input type="password" id="password" th:field="*{password}" class="form-control">
                     <small class="error-msg"
                            th:if="${#fields.hasErrors('password')}"
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmarPassword">Confirmar contraseña</label>
+                    <label for="confirmarPassword" th:text="#{form.confirmarContrasena}">Confirmar contraseña</label>
                     <input type="password" id="confirmarPassword"
                            th:field="*{confirmarPassword}" class="form-control">
                     <small class="error-msg"
@@ -64,13 +64,14 @@
                            th:errors="*{confirmarPassword}">Error</small>
                 </div>
 
-                <button type="submit" class="btn btn--primary btn--full btn--lg">
+                <button type="submit" class="btn btn--primary btn--full btn--lg"
+                        th:text="#{registro.crearCuenta.boton}">
                     Crear cuenta
                 </button>
 
                 <p class="auth-form__alt">
-                    ¿Ya tienes cuenta?
-                    <a th:href="@{/login}">Inicia sesión aquí</a>
+                    <span th:text="#{registro.yaTienesCuenta}">¿Ya tienes cuenta?</span>
+                    <a th:href="@{/login}" th:text="#{registro.iniciaSesion}">Inicia sesión aquí</a>
                 </p>
             </form>
         </div>

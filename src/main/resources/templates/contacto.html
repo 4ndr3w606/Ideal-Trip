@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head('Contacto · Ideal-Trip')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<!-- ===== Hero ===== -->
+<section class="hero hero--info">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+        <h1 class="hero__title">Contacto</h1>
+        <p class="hero__subtitle">Estamos para ayudarte a planear tu próximo viaje.</p>
+    </div>
+</section>
+
+<!-- ===== Form + Info ===== -->
+<section class="section">
+    <div class="container">
+
+        <!-- Banner flash de éxito -->
+        <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+
+        <div class="row g-5">
+
+            <!-- Columna izquierda: info de contacto -->
+            <aside class="col-lg-5">
+                <h2 class="section__title">Datos de contacto</h2>
+                <p class="section__subtitle">
+                    Estamos en Neiva, atendiendo a todo el país. Contáctanos por el medio
+                    que te resulte más cómodo.
+                </p>
+
+                <ul class="info-contacto">
+                    <li>
+                        <span class="info-contacto__icon">📍</span>
+                        <div>
+                            <strong>Dirección</strong><br>
+                            Cra. 5 #14-58, Neiva, Huila, Colombia
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-contacto__icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:contacto@ideal-trip.com">contacto@ideal-trip.com</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-contacto__icon">📞</span>
+                        <div>
+                            <strong>Teléfono</strong><br>
+                            +57 (8) 875 4321
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-contacto__icon">💬</span>
+                        <div>
+                            <strong>WhatsApp</strong><br>
+                            <a href="https://wa.me/573001234567" target="_blank" rel="noopener">
+                                +57 300 123 4567
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-contacto__icon">🕒</span>
+                        <div>
+                            <strong>Horario de atención</strong><br>
+                            Lunes a viernes: 8:00 — 18:00<br>
+                            Sábados: 9:00 — 13:00
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="redes-sociales">
+                    <a href="#" class="red-social" aria-label="Instagram">📷</a>
+                    <a href="#" class="red-social" aria-label="Facebook">📘</a>
+                    <a href="#" class="red-social" aria-label="Twitter">🐦</a>
+                    <a href="#" class="red-social" aria-label="LinkedIn">💼</a>
+                </div>
+            </aside>
+
+            <!-- Columna derecha: formulario -->
+            <main class="col-lg-7">
+                <div class="auth-card">
+                    <h2 class="section__title" style="font-size: 1.4rem; margin-bottom: 0.5rem;">
+                        Escríbenos
+                    </h2>
+                    <p style="color:#666; margin-bottom: 1.5rem;">
+                        Te responderemos en menos de 24 horas hábiles.
+                    </p>
+
+                    <form th:action="@{/contacto}" th:object="${contactoDto}"
+                          method="post" class="auth-form" novalidate>
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" th:field="*{nombre}"
+                                   class="form-control" placeholder="Tu nombre">
+                            <small class="error-msg" th:if="${#fields.hasErrors('nombre')}"
+                                   th:errors="*{nombre}">Error</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" th:field="*{email}"
+                                   class="form-control" placeholder="tu@email.com">
+                            <small class="error-msg" th:if="${#fields.hasErrors('email')}"
+                                   th:errors="*{email}">Error</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" th:field="*{asunto}"
+                                   class="form-control" placeholder="¿De qué quieres hablarnos?">
+                            <small class="error-msg" th:if="${#fields.hasErrors('asunto')}"
+                                   th:errors="*{asunto}">Error</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" th:field="*{mensaje}" class="form-control"
+                                      rows="5" placeholder="Cuéntanos en qué podemos ayudarte (mínimo 10 caracteres)"></textarea>
+                            <small class="error-msg" th:if="${#fields.hasErrors('mensaje')}"
+                                   th:errors="*{mensaje}">Error</small>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full btn--lg">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="es">
 
-<head th:replace="~{fragments/layout :: head('Ideal-Trip · Paquetes')}"></head>
+<head th:replace="~{fragments/layout :: head(#{paquetes.titulo})}"></head>
 
 <body>
 
@@ -17,9 +17,9 @@
             <form th:action="@{/paquetes}" method="get" class="panel-filtros">
 
                 <div class="filtro-seccion">
-                    <h6 class="filtro-titulo">Destino</h6>
+                    <h6 class="filtro-titulo" th:text="#{filtros.destino}">Destino</h6>
                     <select name="destinoId" class="form-select">
-                        <option value="">Todos</option>
+                        <option value="" th:text="#{filtros.todos}">Todos</option>
                         <option th:each="d : ${destinos}"
                                 th:value="${d.id}"
                                 th:text="${d.nombre}"
@@ -28,28 +28,35 @@
                 </div>
 
                 <div class="filtro-seccion mt-3">
-                    <h6 class="filtro-titulo">Tipo</h6>
+                    <h6 class="filtro-titulo" th:text="#{filtros.tipo}">Tipo</h6>
                     <select name="tipo" class="form-select">
-                        <option value="">Todos</option>
-                        <option value="Todo Incluido" th:selected="${tipoSeleccionado == 'Todo Incluido'}">Todo Incluido</option>
-                        <option value="Aventura"     th:selected="${tipoSeleccionado == 'Aventura'}">Aventura</option>
-                        <option value="Cultural"     th:selected="${tipoSeleccionado == 'Cultural'}">Cultural</option>
-                        <option value="Luna de Miel" th:selected="${tipoSeleccionado == 'Luna de Miel'}">Luna de Miel</option>
-                        <option value="Familiar"     th:selected="${tipoSeleccionado == 'Familiar'}">Familiar</option>
+                        <option value="" th:text="#{filtros.todos}">Todos</option>
+                        <option value="Todo Incluido" th:selected="${tipoSeleccionado == 'Todo Incluido'}"
+                                th:text="#{tipo.todoIncluido}">Todo Incluido</option>
+                        <option value="Aventura" th:selected="${tipoSeleccionado == 'Aventura'}"
+                                th:text="#{tipo.aventura}">Aventura</option>
+                        <option value="Cultural" th:selected="${tipoSeleccionado == 'Cultural'}"
+                                th:text="#{tipo.cultural}">Cultural</option>
+                        <option value="Luna de Miel" th:selected="${tipoSeleccionado == 'Luna de Miel'}"
+                                th:text="#{tipo.lunaDeMiel}">Luna de Miel</option>
+                        <option value="Familiar" th:selected="${tipoSeleccionado == 'Familiar'}"
+                                th:text="#{tipo.familiar}">Familiar</option>
                     </select>
                 </div>
 
                 <div class="filtro-seccion mt-3">
-                    <h6 class="filtro-titulo">Rango de precio</h6>
+                    <h6 class="filtro-titulo" th:text="#{filtros.precioRango}">Rango de precio</h6>
                     <input type="number" name="precioMin" class="form-control mb-2"
-                           placeholder="Mínimo" th:value="${precioMin}">
+                           th:placeholder="#{filtros.precio.min}" th:value="${precioMin}">
                     <input type="number" name="precioMax" class="form-control"
-                           placeholder="Máximo" th:value="${precioMax}">
+                           th:placeholder="#{filtros.precio.max}" th:value="${precioMax}">
                 </div>
 
                 <div class="filtro-seccion mt-3">
-                    <button type="submit" class="btn btn--primary btn--full">Aplicar filtros</button>
-                    <a th:href="@{/paquetes}" class="btn btn--outline btn--full mt-2">Limpiar</a>
+                    <button type="submit" class="btn btn--primary btn--full"
+                            th:text="#{filtros.aplicar}">Aplicar filtros</button>
+                    <a th:href="@{/paquetes}" class="btn btn--outline btn--full mt-2"
+                       th:text="#{filtros.limpiar}">Limpiar</a>
                 </div>
             </form>
         </aside>
@@ -58,11 +65,12 @@
         <main class="col-lg-9 col-md-8">
 
             <p class="resultados-texto"
-               th:text="|${#lists.size(paquetes)} paquete(s) encontrado(s)|">
-                0 paquetes
+               th:text="#{paquetes.resultados(${#lists.size(paquetes)})}">
+                Resultados: 0
             </p>
 
-            <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle">
+            <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle"
+               th:text="#{paquetes.vacio.busqueda}">
                 No se encontraron paquetes con esos criterios.
             </p>
 
@@ -70,7 +78,6 @@
 
                 <div th:each="p : ${paquetes}" class="paquete-card">
 
-                    <!-- Imagen flotante con padding interior -->
                     <div class="paquete-card__imagen-wrap">
                         <div class="paquete-card__imagen"
                              th:with="imgUrl=${p.imagenUrl != null and !p.imagenUrl.isBlank()
@@ -92,18 +99,18 @@
                             </li>
                             <li>
                                 <span class="paquete-card__icon">⏱️</span>
-                                <span th:text="|${p.duracionDias} días|">7 días</span>
+                                <span th:text="#{paquete.dias(${p.duracionDias})}">7 días</span>
                             </li>
                             <li>
                                 <span class="paquete-card__icon">👥</span>
-                                <span th:text="|${p.cuposDisponibles} cupos disponibles|">Cupos</span>
+                                <span th:text="#{paquetes.card.cuposDisponibles(${p.cuposDisponibles})}">Cupos</span>
                             </li>
                         </ul>
 
                         <p class="paquete-card__descripcion" th:text="${p.descripcion}">Descripción</p>
 
                         <a th:href="@{/paquetes/{id}(id=${p.id})}" class="btn btn--primary">
-                            <span>Ver detalle por</span>
+                            <span th:text="#{paquetes.card.verDetallePor}">Ver detalle por</span>
                             <span th:text="'$ ' + ${#numbers.formatInteger(p.precio, 0, 'POINT')}">$0</span>
                         </a>
                     </div>

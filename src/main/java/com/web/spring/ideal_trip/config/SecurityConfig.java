@@ -50,7 +50,8 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/uploads/**", "/favicon.ico").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .requestMatchers("/", "/destinos/**", "/paquetes/**",
-                                "/login", "/registro", "/error/**").permitAll()
+                                "/login", "/registro", "/error/**",
+                                "/nosotros").permitAll()
                         .requestMatchers("/oauth2/**", "/login/oauth2/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()

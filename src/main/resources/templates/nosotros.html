@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{fragments/layout :: head(#{nosotros.titulo})}"></head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<!-- ===== Hero ===== -->
+<section class="hero hero--info">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+        <h1 class="hero__title" th:text="#{nosotros.hero.titulo}">Sobre Ideal-Trip</h1>
+        <p class="hero__subtitle" th:text="#{nosotros.hero.subtitulo}">
+            Diseñamos viajes que se vuelven recuerdos.
+        </p>
+    </div>
+</section>
+
+<!-- ===== Misión y visión ===== -->
+<section class="section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h2 class="info-card__title" th:text="#{nosotros.mision.titulo}">Nuestra misión</h2>
+                    <p class="info-card__text" th:text="#{nosotros.mision.texto}">
+                        Facilitar el acceso a experiencias de viaje memorables...
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h2 class="info-card__title" th:text="#{nosotros.vision.titulo}">Nuestra visión</h2>
+                    <p class="info-card__text" th:text="#{nosotros.vision.texto}">
+                        Ser la agencia de referencia en el sur de Colombia...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Valores ===== -->
+<section class="section section--alt">
+    <div class="container">
+        <h2 class="section__title text-center" th:text="#{nosotros.valores.titulo}">
+            Lo que nos define
+        </h2>
+        <p class="section__subtitle text-center" th:text="#{nosotros.valores.subtitulo}">
+            Cuatro principios que guían cada paquete que armamos.
+        </p>
+
+        <div class="row g-4 mt-3">
+            <div class="col-lg-3 col-md-6">
+                <div class="valor-card">
+                    <div class="valor-card__icon">🌍</div>
+                    <h3 class="valor-card__title" th:text="#{nosotros.valor1.titulo}">Pasión por viajar</h3>
+                    <p class="valor-card__text" th:text="#{nosotros.valor1.texto}">
+                        Cada destino que ofrecemos lo conocemos...
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="valor-card">
+                    <div class="valor-card__icon">🤝</div>
+                    <h3 class="valor-card__title" th:text="#{nosotros.valor2.titulo}">Confianza</h3>
+                    <p class="valor-card__text" th:text="#{nosotros.valor2.texto}">
+                        Precios transparentes...
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="valor-card">
+                    <div class="valor-card__icon">🌱</div>
+                    <h3 class="valor-card__title" th:text="#{nosotros.valor3.titulo}">Sostenibilidad</h3>
+                    <p class="valor-card__text" th:text="#{nosotros.valor3.texto}">
+                        Priorizamos proveedores locales...
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="valor-card">
+                    <div class="valor-card__icon">✨</div>
+                    <h3 class="valor-card__title" th:text="#{nosotros.valor4.titulo}">Calidad</h3>
+                    <p class="valor-card__text" th:text="#{nosotros.valor4.texto}">
+                        Cada detalle del paquete...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

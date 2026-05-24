@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class HomeController {
 
     private final DestinoService destinoService;
@@ -46,4 +48,12 @@ public class HomeController {
 
         return "index"; // se resuelve a templates/index.html
     }
+
+    @GetMapping("/nosotros")
+    public String nosotros() {
+        return "nosotros";
+    }
+
+
+
 }

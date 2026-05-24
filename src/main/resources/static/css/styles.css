@@ -975,6 +975,65 @@ LOGIN GOOGLE
 .btn--danger:hover {
   background: #b91c1c;
 }
+/* ========================================
+   SELECCIÓN DE METODO DE PAGO
+   ======================================== */
+/* Selección de método de pago (con radio button) */
+.metodo-pago-card {
+  display: block;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 24px 22px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 100%;
+  min-height: 200px;
+  position: relative;
+}
+
+.metodo-pago-card:hover {
+  border-color: #2563eb;
+  background-color: #f0f7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+/* Oculta el radio nativo pero accesible */
+.metodo-pago-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Estado seleccionado */
+.metodo-pago-card:has(input[type="radio"]:checked) {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.18);
+}
+
+.metodo-pago-card__icon {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.metodo-pago-card__nombre {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.metodo-pago-card__descripcion {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
 /* ═══════════════════════════════════════════
  PAQUET RESERVA
 ═══════════════════════════════════════════ */
@@ -1096,6 +1155,42 @@ LOGIN GOOGLE
   .footer__links  { align-items: flex-start; }
 }
 
+/* ========================================
+   SELECTOR DE IDIOMA
+   ======================================== */
+
+.lang-switcher {
+  display: inline-flex;
+  gap: 4px;
+  margin-right: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.lang-switcher__link {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.lang-switcher__link:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.lang-switcher__link--active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.lang-switcher__link--active:hover {
+  background-color: #1d4ed8;
+  color: white;
+}
 
 /* ═══════════════════════════════════════════
    RESPONSIVE DESTINOS.HTML

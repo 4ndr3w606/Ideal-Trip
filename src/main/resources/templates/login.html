@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head th:replace="~{fragments/layout :: head('Iniciar sesión · Ideal-Trip')}"></head>
+<head th:replace="~{fragments/layout :: head(#{login.titulo})}"></head>
 
 <body>
 
@@ -10,7 +10,7 @@
 <section class="section">
     <div class="container">
         <div class="auth-card">
-            <h1 class="section__title">Iniciar sesión</h1>
+            <h1 class="section__title" th:text="#{login.iniciarSesion}">Iniciar sesión</h1>
 
             <!-- Mensaje flash tras registro exitoso -->
             <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}">
@@ -18,43 +18,43 @@
             </div>
 
             <!-- Mensaje tras logout -->
-            <div th:if="${param.logout}" class="alert alert-info">
+            <div th:if="${param.logout}" class="alert alert-info" th:text="#{login.logout}">
                 Has cerrado sesión correctamente.
             </div>
 
             <!-- Error de credenciales tradicionales -->
-            <div th:if="${param.error}" class="alert alert-danger">
+            <div th:if="${param.error}" class="alert alert-danger" th:text="#{login.error}">
                 Email o contraseña incorrectos.
             </div>
 
             <!-- Error de OAuth -->
-            <div th:if="${param.oauthError}" class="alert alert-danger">
-                No se pudo iniciar sesión con Google. Verificá que tu cuenta esté activa
-                o intentá nuevamente.
+            <div th:if="${param.oauthError}" class="alert alert-danger" th:text="#{login.oauthError}">
+                No se pudo iniciar sesión con Google.
             </div>
 
             <form th:action="@{/login}" method="post" class="auth-form">
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" th:text="#{form.email}">Email</label>
                     <input type="email" id="email" name="email"
                            class="form-control" required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
+                    <label for="password" th:text="#{form.contrasena}">Contraseña</label>
                     <input type="password" id="password" name="password"
                            class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn--primary btn--full btn--lg">
+                <button type="submit" class="btn btn--primary btn--full btn--lg"
+                        th:text="#{login.entrar}">
                     Entrar
                 </button>
             </form>
 
             <!-- Separador visual -->
             <div class="auth-form__divider">
-                <span>o</span>
+                <span th:text="#{login.o}">o</span>
             </div>
 
             <!-- Login con Google -->
@@ -67,12 +67,12 @@
                     <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
                     <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
                 </svg>
-                Iniciar sesión con Google
+                <span th:text="#{login.conGoogle}">Iniciar sesión con Google</span>
             </a>
 
             <p class="auth-form__alt">
-                ¿No tienes cuenta?
-                <a th:href="@{/registro}">Regístrate aquí</a>
+                <span th:text="#{login.noTienesCuenta}">¿No tienes cuenta?</span>
+                <a th:href="@{/registro}" th:text="#{login.registrate}">Regístrate aquí</a>
             </p>
         </div>
     </div>

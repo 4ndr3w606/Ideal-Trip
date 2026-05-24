@@ -34,7 +34,6 @@
                 <p th:text="|Destino: ${r.paquete.destino.nombre}, ${r.paquete.destino.pais}|">Destino</p>
                 <p th:text="|Fecha de viaje: ${#temporals.format(r.fechaViaje, 'dd/MM/yyyy HH:mm')}|">Fecha</p>
                 <p th:text="|Personas: ${r.cantidadPersonas}|">Personas</p>
-                <p>
                     Total:
                     <strong th:text="'$' + ${#numbers.formatInteger(r.precioTotal, 0, 'POINT')}">$0</strong>
                 </p>

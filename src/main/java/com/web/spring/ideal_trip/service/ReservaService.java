@@ -25,6 +25,7 @@ public class ReservaService {
     private final UsuarioService usuarioService;
     private final PaqueteService paqueteService;
 
+
     /* ============ LECTURAS ============ */
 
     public List<Reserva> listarTodas() {
@@ -135,10 +136,13 @@ public class ReservaService {
     }
 
     /** Atajos útiles para los controladores. */
+    /** Confirma sin método de pago (admin manual, casos legacy). */
     @Transactional
     public Reserva confirmar(Long reservaId) {
         return cambiarEstado(reservaId, EstadoReserva.CONFIRMADA);
     }
+
+
 
     @Transactional
     public Reserva cancelar(Long reservaId) {

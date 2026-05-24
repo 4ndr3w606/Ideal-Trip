@@ -28,6 +28,7 @@ public class Reserva {
     foreignKey = @ForeignKey(name = "fk_reserva_usuario"))
     private Usuario usuario;
 
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="paquete_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_reserva_paquete"))

@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+
 import java.math.BigDecimal;
 
 /**
@@ -28,10 +29,12 @@ public class DataSeeder implements CommandLineRunner {
     private final UsuarioService usuarioService;
     private final PaqueteService paqueteService;
 
+
     @Override
     public void run(String... args) {
         seedUsuarios();
         seedDestinosYPaquetes();
+
     }
 
     /* ============ USUARIOS ============ */
@@ -193,4 +196,5 @@ public class DataSeeder implements CommandLineRunner {
 
         log.info("Seed: 7 paquetes creados.");
     }
+
 }

@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="es">
 
-<head th:replace="~{fragments/layout :: head(${destino.nombre} + ' · Ideal-Trip')}"></head>
+<head th:replace="~{fragments/layout :: head(#{destinoDetalle.titulo(${destino.nombre})})}"></head>
 
 <body>
 
@@ -25,10 +25,10 @@
 <!-- ===== Descripción ===== -->
 <section class="section">
     <div class="container">
-        <h2 class="section__title">Sobre este destino</h2>
+        <h2 class="section__title" th:text="#{destinoDetalle.sobreEsteDestino}">Sobre este destino</h2>
         <p class="section__text" th:text="${destino.descripcion}">Descripción...</p>
         <p class="section__text">
-            Precio base desde
+            <span th:text="#{destinoDetalle.precioBaseDesde}">Precio base desde</span>
             <strong th:text="'$' + ${#numbers.formatInteger(destino.precioBase, 0, 'POINT')}">$0</strong>
         </p>
     </div>
@@ -37,9 +37,10 @@
 <!-- ===== Paquetes del destino ===== -->
 <section class="section section--gray">
     <div class="container">
-        <h2 class="section__title">Paquetes disponibles</h2>
+        <h2 class="section__title" th:text="#{destinoDetalle.paquetesDisponibles}">Paquetes disponibles</h2>
 
-        <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle">
+        <p th:if="${#lists.isEmpty(paquetes)}" class="section__subtitle"
+           th:text="#{destinoDetalle.sinPaquetes}">
             Este destino aún no tiene paquetes disponibles.
         </p>
 
@@ -51,11 +52,11 @@
                     <h3 class="paquete-card__dest" th:text="${p.nombre}">Nombre del paquete</h3>
                     <p class="paquete-card__incluye" th:text="${p.incluye}">Lo que incluye</p>
                     <ul class="paquete-card__list">
-                        <li th:text="${p.duracionDias} + ' días'">7 días</li>
-                        <li th:text="'Cupos disponibles: ' + ${p.cuposDisponibles}">Cupos: 0</li>
+                        <li th:text="#{paquete.dias(${p.duracionDias})}">7 días</li>
+                        <li th:text="#{paquete.cuposDisponibles(${p.cuposDisponibles})}">Cupos: 0</li>
                     </ul>
                     <a th:href="@{/paquetes/{id}(id=${p.id})}" class="btn btn--primary btn--full">
-                        Reservar por
+                        <span th:text="#{paquete.reservarPor}">Reservar por</span>
                         <span th:text="'$' + ${#numbers.formatInteger(p.precio, 0, 'POINT')}">$0</span>
                     </a>
                 </div>
@@ -64,7 +65,8 @@
         </div>
 
         <div class="como__cta mt-4">
-            <a th:href="@{/destinos}" class="btn btn--outline">← Volver a destinos</a>
+            <a th:href="@{/destinos}" class="btn btn--outline"
+               th:text="#{destinoDetalle.volver}">← Volver a destinos</a>
         </div>
     </div>
 </section>

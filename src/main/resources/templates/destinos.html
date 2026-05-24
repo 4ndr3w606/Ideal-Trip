@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="es">
 
-<head th:replace="~{fragments/layout :: head('Ideal-Trip · Destinos')}"></head>
+<head th:replace="~{fragments/layout :: head(#{destinos.titulo})}"></head>
 
 <body>
 
@@ -18,27 +18,34 @@
             <form th:action="@{/destinos}" method="get" class="panel-filtros">
 
                 <div class="filtro-seccion">
-                    <h6 class="filtro-titulo">Buscar</h6>
+                    <h6 class="filtro-titulo" th:text="#{filtros.buscar}">Buscar</h6>
                     <input type="text" name="q" class="form-control"
-                           placeholder="Nombre del destino"
+                           th:placeholder="#{filtros.buscar.placeholder}"
                            th:value="${busqueda}">
                 </div>
 
                 <div class="filtro-seccion mt-3">
-                    <h6 class="filtro-titulo">País</h6>
+                    <h6 class="filtro-titulo" th:text="#{filtros.pais}">País</h6>
                     <select name="pais" class="form-select">
-                        <option value="">Todos</option>
-                        <option value="Brasil"   th:selected="${paisSeleccionado == 'Brasil'}">Brasil</option>
-                        <option value="España"   th:selected="${paisSeleccionado == 'España'}">España</option>
-                        <option value="Colombia" th:selected="${paisSeleccionado == 'Colombia'}">Colombia</option>
-                        <option value="México"   th:selected="${paisSeleccionado == 'México'}">México</option>
-                        <option value="Francia"  th:selected="${paisSeleccionado == 'Francia'}">Francia</option>
+                        <option value="" th:text="#{filtros.todos}">Todos</option>
+                        <option value="Brasil" th:selected="${paisSeleccionado == 'Brasil'}"
+                                th:text="#{pais.brasil}">Brasil</option>
+                        <option value="España" th:selected="${paisSeleccionado == 'España'}"
+                                th:text="#{pais.espana}">España</option>
+                        <option value="Colombia" th:selected="${paisSeleccionado == 'Colombia'}"
+                                th:text="#{pais.colombia}">Colombia</option>
+                        <option value="México" th:selected="${paisSeleccionado == 'México'}"
+                                th:text="#{pais.mexico}">México</option>
+                        <option value="Francia" th:selected="${paisSeleccionado == 'Francia'}"
+                                th:text="#{pais.francia}">Francia</option>
                     </select>
                 </div>
 
                 <div class="filtro-seccion mt-3">
-                    <button type="submit" class="btn btn--primary btn--full">Aplicar filtros</button>
-                    <a th:href="@{/destinos}" class="btn btn--outline btn--full mt-2">Limpiar</a>
+                    <button type="submit" class="btn btn--primary btn--full"
+                            th:text="#{filtros.aplicar}">Aplicar filtros</button>
+                    <a th:href="@{/destinos}" class="btn btn--outline btn--full mt-2"
+                       th:text="#{filtros.limpiar}">Limpiar</a>
                 </div>
             </form>
         </aside>
@@ -47,11 +54,12 @@
         <main class="col-lg-9 col-md-8">
 
             <p class="resultados-texto"
-               th:text="${#lists.size(destinos)} + ' destino(s) encontrado(s)'">
-                0 destinos
+               th:text="#{destinos.resultados(${#lists.size(destinos)})}">
+                Resultados: 0
             </p>
 
-            <p th:if="${#lists.isEmpty(destinos)}" class="section__subtitle">
+            <p th:if="${#lists.isEmpty(destinos)}" class="section__subtitle"
+               th:text="#{destinos.vacio.busqueda}">
                 No se encontraron destinos con esos criterios.
             </p>
 
@@ -67,15 +75,14 @@
                         <p class="card-destino-desc" th:text="${d.descripcion}">Descripción</p>
                     </div>
                     <div class="card-destino-footer">
-                        <a th:href="@{/destinos/{id}(id=${d.id})}" class="btn-ver-paquetes">
-                            Ver paquetes
-                        </a>
+                        <a th:href="@{/destinos/{id}(id=${d.id})}" class="btn-ver-paquetes"
+                           th:text="#{destinos.verPaquetes}">Ver paquetes</a>
                         <span class="card-destino-meta"
-                              th:text="'Número de paquetes: ' + ${conteoPaquetes[d.id]}">
+                              th:text="#{destinos.numeroPaquetes(${conteoPaquetes[d.id]})}">
                             Número de paquetes: 0
                         </span>
                         <span class="card-destino-meta">
-                            Desde:
+                            <span th:text="#{destinos.desde}">Desde:</span>
                             <strong th:text="'$' + ${#numbers.formatInteger(d.precioBase, 0, 'POINT')}">$0</strong>
                         </span>
                     </div>
