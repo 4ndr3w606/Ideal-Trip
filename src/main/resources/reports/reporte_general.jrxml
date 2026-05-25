@@ -1,0 +1,858 @@
+<!-- Created with Jaspersoft Studio version 7.0.6.final using JasperReports Library version 7.0.6-5d2a603fdc6b3db8f842a83383e594f41891534d  -->
+<jasperReport name="reporte_general" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a272b6cb-31ea-4053-bb5f-6d2465f19158">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<style name="Table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="Dataset1" uuid="1a4b397b-8340-43c0-9040-5c11f4e1ea39">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+		<query language="SQL"><![CDATA[Select *from usuarios]]></query>
+		<field name="id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="activo" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="activo"/>
+			<property name="com.jaspersoft.studio.field.label" value="activo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="apellido" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="email" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="email"/>
+			<property name="com.jaspersoft.studio.field.label" value="email"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="fecha_registro" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_registro"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_registro"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="password" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="password"/>
+			<property name="com.jaspersoft.studio.field.label" value="password"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="rol" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="rol"/>
+			<property name="com.jaspersoft.studio.field.label" value="rol"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+		<field name="telefono" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+			<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+		</field>
+	</dataset>
+	<dataset name="Dataset2" uuid="0059763c-d87d-4b13-bb43-655ae0727f86">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+		<query language="SQL"><![CDATA[Select *from reservas]]></query>
+		<field name="id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="cantidad_personas" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="cantidad_personas"/>
+			<property name="com.jaspersoft.studio.field.label" value="cantidad_personas"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="descripcion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="estado" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="estado"/>
+			<property name="com.jaspersoft.studio.field.label" value="estado"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="fecha_reserva" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_reserva"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_reserva"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="fecha_viaje" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="fecha_viaje"/>
+			<property name="com.jaspersoft.studio.field.label" value="fecha_viaje"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="precio_total" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="precio_total"/>
+			<property name="com.jaspersoft.studio.field.label" value="precio_total"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="paquete_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="paquete_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="paquete_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+		<field name="usuario_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="usuario_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="usuario_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reservas"/>
+		</field>
+	</dataset>
+	<dataset name="Dataset3" uuid="0aa444be-8261-4684-a8ff-7257c75c84a3">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+		<query language="SQL"><![CDATA[Select *from paquetes]]></query>
+		<field name="id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="activo" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="activo"/>
+			<property name="com.jaspersoft.studio.field.label" value="activo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="cupos_disponibles" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="cupos_disponibles"/>
+			<property name="com.jaspersoft.studio.field.label" value="cupos_disponibles"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="descripcion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="duracion_dias" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="duracion_dias"/>
+			<property name="com.jaspersoft.studio.field.label" value="duracion_dias"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="imagen_url" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="imagen_url"/>
+			<property name="com.jaspersoft.studio.field.label" value="imagen_url"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="incluye" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="incluye"/>
+			<property name="com.jaspersoft.studio.field.label" value="incluye"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="precio" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="precio"/>
+			<property name="com.jaspersoft.studio.field.label" value="precio"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="tipo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="tipo"/>
+			<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+		<field name="destino_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="destino_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="destino_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="paquetes"/>
+		</field>
+	</dataset>
+	<dataset name="Dataset4" uuid="1e945505-a153-474f-9e73-71836075b24a">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+		<query language="SQL"><![CDATA[Select *from destinos]]></query>
+		<field name="id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="activo" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="activo"/>
+			<property name="com.jaspersoft.studio.field.label" value="activo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="continente" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="continente"/>
+			<property name="com.jaspersoft.studio.field.label" value="continente"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="descripcion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="imagen_url" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="imagen_url"/>
+			<property name="com.jaspersoft.studio.field.label" value="imagen_url"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="pais" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="pais"/>
+			<property name="com.jaspersoft.studio.field.label" value="pais"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+		<field name="precio_base" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="precio_base"/>
+			<property name="com.jaspersoft.studio.field.label" value="precio_base"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="destinos"/>
+		</field>
+	</dataset>
+	<query language="SQL"><![CDATA[select 1]]></query>
+	<background splitType="Stretch"/>
+	<title height="140" splitType="Stretch">
+		<element kind="staticText" uuid="7dd0ad72-2d47-46ca-9803-b099b138fd18" x="210" y="80" width="146" height="30" fontName="Arial" bold="true" hTextAlign="Center">
+			<text><![CDATA[REPORTE DEL PROYECTO IDEAL TRIP]]></text>
+		</element>
+		<element kind="image" uuid="5e7727c7-8933-43e6-a6e0-14f89520f247" x="10" y="10" width="58" height="61">
+			<expression><![CDATA["USCO_Logo.png"]]></expression>
+		</element>
+	</title>
+	<pageHeader height="46" splitType="Stretch">
+		<element kind="textField" uuid="3be6920c-0313-473f-a967-d0cbe4b7d12c" x="227" y="8" width="100" height="30" fontName="Arial" pattern="MMMMM dd, yyyy" bold="true" hTextAlign="Center">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="32" splitType="Stretch"/>
+	<detail>
+		<band height="246" splitType="Stretch">
+			<element kind="staticText" uuid="fe7304f1-ce74-4b79-93cb-5a28c0901560" x="-11" y="0" width="100" height="30" fontName="Arial" fontSize="11.0" bold="true">
+				<text><![CDATA[Tabla1: Usuarios]]></text>
+			</element>
+			<element kind="component" uuid="b853f77c-2411-4cf4-a374-8b46fac97ff3" x="-10" y="40" width="570" height="206">
+				<component kind="table">
+					<datasetRun uuid="189c3faf-91ba-4cee-919c-c3fd7bee4dd7" subDataset="Dataset1">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="2086a4b5-995a-47b0-aade-b5871cb72330" width="64">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="003392ff-fa94-4d6b-b227-dac83af50232" x="0" y="0" width="64" height="30">
+								<text><![CDATA[id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="520781c9-a2f9-41df-b279-f60f7ab2f62e" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="f2728a56-84e6-495e-80ae-c7a73ddac2bd" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="25c7eb7b-e367-4585-8162-98c62c5e69e7" x="0" y="0" width="63" height="30">
+								<text><![CDATA[activo]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="9eb96463-5882-4d51-88ed-44c52457252d" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{activo}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="d4dbbffe-96cf-4331-a3ee-fea45ccaf6f5" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="d6f76eff-fc42-4619-b2c2-a16d614fcf1a" x="0" y="0" width="63" height="30">
+								<text><![CDATA[apellido]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="bdda5415-28d5-45dc-924b-0b538b905467" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{apellido}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="31dc6c6e-8bd3-4c86-99bb-064af99a1a26" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="f5f6122b-1495-400d-bef0-39015955bdbc" x="0" y="0" width="63" height="30">
+								<text><![CDATA[email]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="47452a01-6983-4ef9-b512-c486fd9ba776" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{email}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="2935c9bc-c8b7-429d-b5bf-a911a5dc44cd" width="64">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="92278376-8655-4dde-8710-43d8ac0c49a5" x="0" y="0" width="64" height="30">
+								<text><![CDATA[fecha_registro]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="cf3aaf6d-8ddf-4057-8460-159c273f5200" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{fecha_registro}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="b3197a70-6ce8-4222-9748-f05e0d9cbcdf" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="c756be70-efcf-4122-98b2-9d20fa4cb508" x="0" y="0" width="63" height="30">
+								<text><![CDATA[nombre]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="49bf78ae-6871-4d9f-9614-6bdbf9ed6e70" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{nombre}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="ca6e5f8f-0cc1-46e9-9fd7-29124afa7ff1" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="7d38a70a-abf1-4d41-9cf0-77db3be3550e" x="0" y="0" width="63" height="30">
+								<text><![CDATA[password]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="3c4f127a-ead6-4cdf-9f2c-13c4892870a8" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{password}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="986974a8-800f-4377-9409-c1a0b4ee9468" width="63">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="63826a3e-bee7-4a04-a689-94da9139c855" x="0" y="0" width="63" height="30">
+								<text><![CDATA[rol]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="9d055bb4-0f5e-471a-aa89-22bb9c020c8f" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{rol}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="ecf585d8-4466-44a0-af45-dbfccf43f985" width="64">
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="c2086a02-9152-4b3f-b55c-4e9d63ed20c3" x="0" y="0" width="64" height="30">
+								<text><![CDATA[telefono]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="c9ef83af-477e-4352-aa04-cb32ad7d60f3" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{telefono}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+		<band height="200">
+			<element kind="staticText" uuid="3aa60203-4b0b-4735-af14-0452a2543cd8" x="-10" y="0" width="100" height="30" fontName="Arial" fontSize="11.0" bold="true">
+				<text><![CDATA[Tabla 2: Reservas]]></text>
+			</element>
+			<element kind="component" uuid="31f60c1b-4baa-4666-8990-e73f7fc92484" x="-10" y="40" width="570" height="110">
+				<component kind="table">
+					<datasetRun uuid="88f5ee30-5dae-4763-97ac-7a003ef144de" subDataset="Dataset2">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="97189b0f-f0af-4346-9232-2027e3ca467c" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="46b71601-dc56-49fa-8f33-bca81e1601eb" x="0" y="0" width="63" height="30">
+								<text><![CDATA[id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="a57caa12-c790-4259-ab58-96eb77cc7035" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="89287d33-b616-4ca2-96b6-e6a8d9805109" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="edf561a4-0455-41ab-8ff6-5c84648e4737" x="0" y="0" width="63" height="30">
+								<text><![CDATA[cantidad_personas]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="0d4242ec-be5f-4210-b2f7-bac8701530a5" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{cantidad_personas}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="6a00d3e5-9e74-4a19-8283-45e8084fbff7" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="7d4c3cfa-10f4-44c7-8a3c-438fedfd5739" x="0" y="0" width="63" height="30">
+								<text><![CDATA[descripcion]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="512b338a-3b47-4485-9829-2bc48c868447" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{descripcion}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="e9a8759b-d25d-4abd-a0e5-acf4a0beed31" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="2d189bfe-c410-432f-9b82-8d0cc8c01066" x="0" y="0" width="63" height="30">
+								<text><![CDATA[estado]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="9c53ef3c-2e27-49b6-b985-4491d79ef7ca" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{estado}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="0f417cf5-154e-47db-af9d-bf1b05f82fcd" width="64">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="90f858cc-95ce-4cd2-9039-7505ce392088" x="0" y="0" width="64" height="30">
+								<text><![CDATA[fecha_reserva]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="0f796ad0-39b8-4626-8067-b6c6f32debfa" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{fecha_reserva}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="ae027e6a-7855-4a8b-9458-ba9a847891db" width="64">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="29d871de-c678-4b0a-a9df-cb5deaf73b68" x="0" y="0" width="64" height="30">
+								<text><![CDATA[fecha_viaje]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="f4f5c440-fe87-4180-84d3-c34cfb79c20a" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{fecha_viaje}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="e07fc731-f472-41a4-962a-9ce2ed709e20" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="d3fba253-c032-4ae8-8875-c536a4636717" x="0" y="0" width="63" height="30">
+								<text><![CDATA[precio_total]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="d93f0815-cff3-4df8-b103-ebfe4a4f4096" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{precio_total}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="f59fe3de-78ee-4b6c-9eab-594902a64f35" width="64">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="f53895f4-b3d0-4c7f-a0ac-af7a7e09fb1f" x="0" y="0" width="64" height="30">
+								<text><![CDATA[paquete_id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="0daa1ff5-1745-46f0-a327-34d16dfecb4e" x="0" y="0" width="64" height="30">
+								<expression><![CDATA[$F{paquete_id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="fa9064ab-bca9-409c-a29e-0ce628fe706b" width="63">
+						<columnHeader height="30" style="Table 1_CH">
+							<element kind="staticText" uuid="430176b7-58a1-4130-9fdd-88b08f90847d" x="0" y="0" width="63" height="30">
+								<text><![CDATA[usuario_id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 1_TD">
+							<element kind="textField" uuid="6c685a0f-a972-43a3-82fb-05644cc16b9d" x="0" y="0" width="63" height="30">
+								<expression><![CDATA[$F{usuario_id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+		<band height="200">
+			<element kind="component" uuid="a34648d9-04e2-4427-bc0e-7d02a2f6ad06" x="-10" y="40" width="570" height="110">
+				<component kind="table">
+					<datasetRun uuid="e3761c2c-ef56-4383-9825-b9d9387ea28f" subDataset="Dataset3">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="626d0a3d-ad99-4a32-92d8-4b6aecca2902" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="069d91f7-6ef0-4aab-a269-81238ea64971" x="0" y="0" width="52" height="30">
+								<text><![CDATA[id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="da5b87f0-ffe7-4d2c-b042-4cbcca47f0f2" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="0a4086c9-f18d-46ab-b7f2-7d9e38ea66d4" width="51">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="9c6dd89c-2eb3-41e6-9493-a037d1a36ef0" x="0" y="0" width="51" height="30">
+								<text><![CDATA[activo]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="24b49610-dd43-4739-8473-159f8fa25520" x="0" y="0" width="51" height="30">
+								<expression><![CDATA[$F{activo}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="c59f156e-522d-4d03-b4b6-c90f9ccaa3c3" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="01190e2b-2749-42f5-85b2-47d1d80476f8" x="0" y="0" width="52" height="30">
+								<text><![CDATA[cupos_disponibles]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="31dd8db2-b500-4a0c-8d4a-e4cbc8b1f94d" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{cupos_disponibles}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="a5126907-537c-4565-b6e1-7c32cc0ef2f6" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="7a2eb162-c1e2-4890-9944-dca2b2902283" x="0" y="0" width="52" height="30">
+								<text><![CDATA[descripcion]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="9559eac7-a42d-4e0f-8fa4-0c3de2e3131e" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{descripcion}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="0e37e5a9-38d7-459a-9195-815939547d27" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="500b9864-2779-484e-abb7-9e0da916c1e0" x="0" y="0" width="52" height="30">
+								<text><![CDATA[duracion_dias]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="273306e6-8c05-4fb3-bcc8-6f8c2f781140" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{duracion_dias}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="437e8291-3cb2-4d65-a4d7-21578b2278ac" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="687b653c-c7d3-4b8a-8d7e-bb5ce2780b65" x="0" y="0" width="52" height="30">
+								<text><![CDATA[imagen_url]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="538a1839-03c9-4c53-90f3-601d2bd521d0" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{imagen_url}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="74f34e59-144c-4090-b57a-a34feb5c7840" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="828c0088-17c3-4bf1-9321-e5ffcb165bef" x="0" y="0" width="52" height="30">
+								<text><![CDATA[incluye]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="1b4dc15c-7d05-4c34-a4ca-e42a3c7af8bb" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{incluye}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="436e6cc2-8e9f-4a80-8169-0b3776185bc7" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="246ea5c5-3d37-4edf-9870-00337a78c91e" x="0" y="0" width="52" height="30">
+								<text><![CDATA[nombre]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="459c0d79-1099-4f9c-8866-ec9bda40c2e7" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{nombre}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="d35b10f8-6324-448d-be18-1075d94857fd" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="e8eb9570-1a3d-4c6d-b808-d388a2297219" x="0" y="0" width="52" height="30">
+								<text><![CDATA[precio]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="e0196928-65b2-48aa-a4a3-54bd7cba703f" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{precio}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="09deb9fe-cf8e-463e-8dc6-3e7edc2edbec" width="51">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="28afa0b2-2f4f-48cc-9685-dafdea8658f5" x="0" y="0" width="51" height="30">
+								<text><![CDATA[tipo]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="974eca4f-9250-4b46-8958-13d4a098dd8f" x="0" y="0" width="51" height="30">
+								<expression><![CDATA[$F{tipo}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="8d60aad3-dd69-4467-8cb8-2bdc2d0a1e86" width="52">
+						<columnHeader height="30" style="Table 2_CH">
+							<element kind="staticText" uuid="f55dcb83-4137-4e57-b757-79e56d960e37" x="0" y="0" width="52" height="30">
+								<text><![CDATA[destino_id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 2_TD">
+							<element kind="textField" uuid="29c7b0fe-c470-4708-844b-8b2155e68eb1" x="0" y="0" width="52" height="30">
+								<expression><![CDATA[$F{destino_id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table 2_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table 2_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table 2_TD"/>
+			</element>
+			<element kind="staticText" uuid="c170466a-0bc6-4045-b6d4-6027a760acfd" x="-11" y="10" width="100" height="30" fontName="Arial" fontSize="11.0" bold="true">
+				<text><![CDATA[Tabla 3: Paquetes]]></text>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+		<band height="252">
+			<element kind="staticText" uuid="286e7b46-cf2d-4c26-a4e7-150d343569e7" x="-10" y="0" width="100" height="30" fontName="Arial" fontSize="11.0" bold="true">
+				<text><![CDATA[Tabla 4: Destinos]]></text>
+			</element>
+			<element kind="component" uuid="db936971-4067-4e1c-b49a-a54ef3d76542" x="-10" y="40" width="570" height="212">
+				<component kind="table">
+					<datasetRun uuid="3fc439e0-3730-4143-8f23-94eba32b8019" subDataset="Dataset4">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="d664acc6-1257-4365-9f77-fc067a174f42" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="bfd5b960-64b9-4042-9c6f-2a0d3d499ba3" x="0" y="0" width="71" height="30">
+								<text><![CDATA[id]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="e8d7e3fe-93f0-4d85-93c2-f877b8421292" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{id}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="d27a2ce5-e3d6-4201-babd-1551352569cc" width="72">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="968bf450-3031-4263-9df8-4418f9bb893b" x="0" y="0" width="72" height="30">
+								<text><![CDATA[activo]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="438aa285-9854-49e4-bfe2-e5c873d8b11a" x="0" y="0" width="72" height="30">
+								<expression><![CDATA[$F{activo}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="06a13e28-607d-4289-9e4a-8078b5f0e367" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="251edfeb-3131-4dca-bd04-8750132a406e" x="0" y="0" width="71" height="30">
+								<text><![CDATA[continente]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="2f7d6b70-35f4-4d95-8492-464cab5cb664" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{continente}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="fffbfc98-b3a5-4f18-ba9b-73cae9fa5be3" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="4f65b6f0-f15d-429f-a707-17c11d545e27" x="0" y="0" width="71" height="30">
+								<text><![CDATA[descripcion]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="d42639cc-3efa-4cad-a215-8067d1352095" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{descripcion}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="efd3529d-3ec2-4adb-b97f-b18658ad5977" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="24df0286-aa2c-4556-92ed-adf9c44b2498" x="0" y="0" width="71" height="30">
+								<text><![CDATA[imagen_url]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="6e9e8bb9-a15b-484c-a5a9-f847a09c7c37" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{imagen_url}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="7bf3f14a-9ef9-4741-b05b-9820d37f6aeb" width="72">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="40a33cf8-42d9-4cbc-bd64-4d5114e3d931" x="0" y="0" width="72" height="30">
+								<text><![CDATA[nombre]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="f47e1754-faa6-4a3f-ada8-cbadd0fda76f" x="0" y="0" width="72" height="30">
+								<expression><![CDATA[$F{nombre}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="c58146a1-9d9f-443e-a8d7-d3204eed619f" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="faffa157-17ab-4951-8171-0acd70d33128" x="0" y="0" width="71" height="30">
+								<text><![CDATA[pais]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="5e00031d-2a08-4ad8-b082-ac903e66b329" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{pais}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="b8354a91-0b43-4f7e-9dd4-7a55e75e167b" width="71">
+						<columnHeader height="30" style="Table 3_CH">
+							<element kind="staticText" uuid="d77d3969-73b6-49bd-a2ca-be1a6010b110" x="0" y="0" width="71" height="30">
+								<text><![CDATA[precio_base]]></text>
+							</element>
+						</columnHeader>
+						<detailCell height="30" style="Table 3_TD">
+							<element kind="textField" uuid="e73d2c3f-6d1b-4a01-b458-6c81fc1cf47b" x="0" y="0" width="71" height="30">
+								<expression><![CDATA[$F{precio_base}]]></expression>
+							</element>
+						</detailCell>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table 3_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table 3_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table 3_TD"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="39" splitType="Stretch">
+		<element kind="textField" uuid="f8a3b72c-46ce-4127-a68e-fcb612f22b6a" x="356" y="4" width="100" height="30" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="fe6f03e7-ca44-4ead-ba3f-55e7df169f1c" x="460" y="4" width="100" height="30" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA[" of " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
